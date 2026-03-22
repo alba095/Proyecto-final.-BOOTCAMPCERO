@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movimientos</title>
+
+    <!-- Pico CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+</head>
+
+<body>
+    <main class="container">
+
+        <!-- MENÚ -->
+        <nav>
+            <ul>
+                <li>
+                    {% if pagina == "inicio" %}
+                        INICIO
+                    {% else %}
+                        <a href="/">INICIO</a>
+                    {% endif %}
+                </li>
+
+                <li>
+                    {% if pagina == "compra" %}
+                        COMPRA
+                    {% else %}
+                        <a href="/purchase">COMPRA</a>
+                    {% endif %}
+                </li>
+
+                <li>
+                    {% if pagina == "status" %}
+                        ESTADO
+                    {% else %}
+                        <a href="/status">ESTADO</a>
+                    {% endif %}
+                </li>
+            </ul>
+        </nav>
+
+        {% block content %}
+
+        {% if moves %}
+            <h2>Tabla de movimientos</h2>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Fecha</th>
+                        <th>Hora</th>
+                        <th>From</th>
+                        <th>Cantidad</th>
+                        <th>To</th>
+                        <th>Cantidad</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for m in moves %}
+                    <tr>
+                        <td>{{m[1]}}</td>
+                        <td>{{m[2]}}</td>
+                        <td>{{m[3]}}</td>
+                        <td>{{m[4]}}</td>
+                        <td>{{m[5]}}</td>
+                        <td>{{m[6]}}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+        {% else %}
+            <h2>SIN MOVIMIENTOS</h2>
+        {% endif %}
+
+        {% endblock %}
+
+        <!-- FOOTER -->
+        <footer>
+            <small>Proyecto Flask Criptomonedas</small>
+        </footer>
+
+    </main>
+</body>
+</html>
