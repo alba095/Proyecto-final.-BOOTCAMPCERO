@@ -1,54 +1,53 @@
 {% extends "movimientos.html" %}
 {% block content %}
-    <form action="/purchase" method="post">
-        <label for="moneda_from">Moneda from:</label>
-    <select name="moneda_from" id="moneda_from">
-        <option value="">--Por favor, elija una moneda--</option>
-        <option value="EUR" {% if moneda_from == "EUR" %}selected{% endif %}>Euros</option>
-        <option value="BTC" {% if moneda_from == "BTC" %}selected{% endif %}>Bitcoin</option>
-        <option value="ETH" {% if moneda_from == "ETH" %}selected{% endif %}>Ethereum</option>
-        <option value="USDT" {% if moneda_from == "USDT" %}selected{% endif %}>Tether</option>
-        <option value="BNB" {% if moneda_from == "BNB" %}selected{% endif %}>BNB</option>
-        <option value="XRP" {% if moneda_from == "XRP" %}selected{% endif %}>XRP</option>
-        <option value="ADA" {% if moneda_from == "ADA" %}selected{% endif %}>ADA</option>
-        <option value="SOL" {% if moneda_from == "SOL" %}selected{% endif %}>SOL</option>
-        <option value="DOT" {% if moneda_from == "DOT" %}selected{% endif %}>DOT</option>
-        <option value="MATIC" {% if moneda_from == "MATIC" %}selected{% endif %}>MATIC</option>
-    </select>
-        <br><br>
-        <label for="cantidad">Cantidad from : </label>
-        <input type="number" step="any" name="cantidad" id="cantidad" value="{{cantidad}}">
-        <br>
-        <br>
-         <label for="moneda_to">Moneda to:</label>
-    <select name="moneda_to" id="moneda_to">
-        <option value="">--Por favor, elija una moneda--</option>
-        <option value="EUR" {% if moneda_to == "EUR" %}selected{% endif %}>Euros</option>
-        <option value="BTC" {% if moneda_to == "BTC" %}selected{% endif %}>Bitcoin</option>
-        <option value="ETH" {% if moneda_to == "ETH" %}selected{% endif %}>Ethereum</option>
-        <option value="USDT" {% if moneda_to == "USDT" %}selected{% endif %}>Tether</option>
-        <option value="BNB" {% if moneda_to == "BNB" %}selected{% endif %}>BNB</option>
-        <option value="XRP" {% if moneda_to == "XRP" %}selected{% endif %}>XRP</option>
-        <option value="ADA" {% if moneda_to == "ADA" %}selected{% endif %}>ADA</option>
-        <option value="SOL" {% if moneda_to == "SOL" %}selected{% endif %}>SOL</option>
-        <option value="DOT" {% if moneda_to == "DOT" %}selected{% endif %}>DOT</option>
-        <option value="MATIC" {% if moneda_to == "MATIC" %}selected{% endif %}>MATIC</option>
-    </select>
-        <br><br>
+    <h2>Compra / Venta de criptomonedas</h2>
 
-        <label for="cantidad_to">Cantidad to:</label>
+    <form action="/purchase" method="post">
+        <label for="moneda_from">Moneda origen:</label>
+        <select name="moneda_from" id="moneda_from">
+            <option value="">--Por favor, elija una moneda--</option>
+            <option value="EUR" {% if moneda_from == "EUR" %}selected{% endif %}>Euros</option>
+            <option value="BTC" {% if moneda_from == "BTC" %}selected{% endif %}>Bitcoin</option>
+            <option value="ETH" {% if moneda_from == "ETH" %}selected{% endif %}>Ethereum</option>
+            <option value="USDT" {% if moneda_from == "USDT" %}selected{% endif %}>Tether</option>
+            <option value="BNB" {% if moneda_from == "BNB" %}selected{% endif %}>BNB</option>
+            <option value="XRP" {% if moneda_from == "XRP" %}selected{% endif %}>XRP</option>
+            <option value="ADA" {% if moneda_from == "ADA" %}selected{% endif %}>ADA</option>
+            <option value="SOL" {% if moneda_from == "SOL" %}selected{% endif %}>SOL</option>
+            <option value="DOT" {% if moneda_from == "DOT" %}selected{% endif %}>DOT</option>
+            <option value="MATIC" {% if moneda_from == "MATIC" %}selected{% endif %}>MATIC</option>
+        </select>
+
+        <label for="cantidad">Cantidad origen:</label>
+        <input type="number" step="any" name="cantidad" id="cantidad" value="{{cantidad}}">
+
+        <label for="moneda_to">Moneda destino:</label>
+        <select name="moneda_to" id="moneda_to">
+            <option value="">--Por favor, elija una moneda--</option>
+            <option value="EUR" {% if moneda_to == "EUR" %}selected{% endif %}>Euros</option>
+            <option value="BTC" {% if moneda_to == "BTC" %}selected{% endif %}>Bitcoin</option>
+            <option value="ETH" {% if moneda_to == "ETH" %}selected{% endif %}>Ethereum</option>
+            <option value="USDT" {% if moneda_to == "USDT" %}selected{% endif %}>Tether</option>
+            <option value="BNB" {% if moneda_to == "BNB" %}selected{% endif %}>BNB</option>
+            <option value="XRP" {% if moneda_to == "XRP" %}selected{% endif %}>XRP</option>
+            <option value="ADA" {% if moneda_to == "ADA" %}selected{% endif %}>ADA</option>
+            <option value="SOL" {% if moneda_to == "SOL" %}selected{% endif %}>SOL</option>
+            <option value="DOT" {% if moneda_to == "DOT" %}selected{% endif %}>DOT</option>
+            <option value="MATIC" {% if moneda_to == "MATIC" %}selected{% endif %}>MATIC</option>
+        </select>
+
+        <label for="cantidad_to">Cantidad destino:</label>
         <input type="number" step="any" name="cantidad_to" id="cantidad_to" value="{{cantidad_to}}" readonly>
 
-        <br><br>
-
         <button type="submit" name="accion" value="calcular">Calcular</button>
-        <button type="submit" name="accion" value="aceptar">Aceptar</button>
+        <button type="submit" name="accion" value="aceptar" class="contrast">Aceptar</button>
+
         {% if error %}
-         {{error}}
+            <p style="color: red;">{{error}}</p>
         {% endif %}
-       {% if mensaje %}
-       {{mensaje}}
-       {% endif %}
+
+        {% if mensaje %}
+            <p style="color: green;">{{mensaje}}</p>
+        {% endif %}
     </form>
-    
 {% endblock %}

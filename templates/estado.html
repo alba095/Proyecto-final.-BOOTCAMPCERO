@@ -1,17 +1,18 @@
 {% extends "movimientos.html" %}
 {% block content %}
-    <h2>ESTADO DE LA INVERSION</h2>
+    <h2>Estado de la inversión</h2>
     <hr>
-    <h4>Invertido: {{invertido}} </h4>
-    <h4>Recuperado: {{recuperado}}</h4>
-    <h4>Valor de compra: {{valor_compra}} </h4>
-    <h4>Valor actual: {{valor_actual}} </h4>
+    <h4>Invertido: {{ "%.2f"|format(invertido) }} €</h4>
+    <h4>Recuperado: {{ "%.2f"|format(recuperado) }} €</h4>
+    <h4>Valor de compra: {{ "%.2f"|format(valor_compra) }} €</h4>
+    <h4>Valor actual: {{ "%.2f"|format(valor_actual) }} €</h4>
+
     {% if beneficio > 0 %}
-    <h4>Beneficio: {{beneficio}}</h4>
-    {% elif beneficio < 0  %}
-    <h4>Pérdida: {{beneficio}}</h4>
+        <h4 style="color: green;">Beneficio: {{ "%.2f"|format(beneficio) }} €</h4>
+    {% elif beneficio < 0 %}
+        <h4 style="color: red;">Pérdida: {{ "%.2f"|format(beneficio | abs) }} €</h4>
     {% else %}
-    <h4>Sin ganáncia ni pérdida</h4>
+        <h4>Sin ganancia ni pérdida</h4>
     {% endif %}
     <hr>
 {% endblock %}

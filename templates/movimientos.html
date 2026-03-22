@@ -51,10 +51,10 @@
                     <tr>
                         <th>Fecha</th>
                         <th>Hora</th>
-                        <th>From</th>
-                        <th>Cantidad</th>
-                        <th>To</th>
-                        <th>Cantidad</th>
+                        <th>Moneda origen</th>
+                        <th>Cantidad origen</th>
+                        <th>Moneda destino</th>
+                        <th>Cantidad destino</th>
                     </tr>
                 </thead>
 
@@ -64,9 +64,9 @@
                         <td>{{m[1]}}</td>
                         <td>{{m[2]}}</td>
                         <td>{{m[3]}}</td>
-                        <td>{{m[4]}}</td>
+                        <td>{{ "%.6f"|format(m[4]) }}</td>
                         <td>{{m[5]}}</td>
-                        <td>{{m[6]}}</td>
+                        <td>{{ "%.6f"|format(m[6]) }}</td>
                     </tr>
                     {% endfor %}
                 </tbody>
