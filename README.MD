@@ -29,6 +29,15 @@ El usuario puede comprar, vender y consultar el estado actual de su inversión.
 - Pico.css
 
 ---
+## Arquitectura (MVC)
+
+El proyecto sigue el patrón MVC (Modelo-Vista-Controlador):
+
+- **Modelo (Model):** Base de datos SQLite (`movements.db`) y funciones de acceso a datos como `get_mov`, `add_mov` o `get_saldo`.
+- **Vista (View):** Templates HTML con Jinja (`movimientos.html`, `compra_venta.html`, `estado.html`).
+- **Controlador (Controller):** Rutas definidas en Flask (`app.py`) que gestionan la lógica de la aplicación.
+
+Aunque parte de la lógica se encuentra en el controlador, esto es habitual en aplicaciones Flask sencillas.
 
 ## Instalación
 
@@ -37,3 +46,4 @@ El usuario puede comprar, vender y consultar el estado actual de su inversión.
 ```bash
 git clone <https://github.com/alba095/Proyecto-final.-BOOTCAMPCERO.git>
 cd <PROYECTO_FINAL>
+
